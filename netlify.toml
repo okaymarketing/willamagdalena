@@ -1,0 +1,21 @@
+# Netlify configuration for Willa Magdalena
+
+[build]
+  # Brak build step - to jest static site
+  publish = "/"
+
+[context.production]
+  environment = { NODE_ENV = "production" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Cache settings
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
